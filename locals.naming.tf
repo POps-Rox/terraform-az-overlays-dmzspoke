@@ -5,9 +5,9 @@ locals {
 
   resource_group_name = element(coalescelist(data.azurerm_resource_group.rgrp.*.name, module.mod_scaffold_rg.*.resource_group_name, [""]), 0)
   location            = element(coalescelist(data.azurerm_resource_group.rgrp.*.location, module.mod_scaffold_rg.*.resource_group_location, [""]), 0)
-  spoke_vnet_name     = coalesce(var.custom_spoke_virtual_network_name, data.azurenoopsutils_resource_name.vnet.result)
-  spoke_sa_name       = coalesce(var.custom_spoke_storage_account_name, data.azurenoopsutils_resource_name.st.result)
+  spoke_vnet_name     = coalesce(var.custom_spoke_virtual_network_name, data.popsrox_resource_name.vnet.result)
+  spoke_sa_name       = coalesce(var.custom_spoke_storage_account_name, data.popsrox_resource_name.st.result)
 
   # DDOS Protection Plan
-  ddos_plan_name = coalesce(var.ddos_plan_custom_name, "${data.azurenoopsutils_resource_name.ddos.result}")
+  ddos_plan_name = coalesce(var.ddos_plan_custom_name, "${data.popsrox_resource_name.ddos.result}")
 }
