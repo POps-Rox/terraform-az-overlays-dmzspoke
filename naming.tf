@@ -4,7 +4,7 @@
 #------------------------------------------------------------
 # Azure NoOps Naming - This should be used on all resource naming
 #------------------------------------------------------------
-data "popsrox_utils_resource_name" "vnet" {
+data "popsrox_resource_name" "vnet" {
   name          = var.workload_name
   resource_type = "azurerm_virtual_network"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -14,7 +14,7 @@ data "popsrox_utils_resource_name" "vnet" {
   separator     = "-"
 }
 
-data "popsrox_utils_resource_name" "snet" {
+data "popsrox_resource_name" "snet" {
   for_each      = var.spoke_subnets
   name          = var.workload_name
   resource_type = "azurerm_subnet"
@@ -25,7 +25,7 @@ data "popsrox_utils_resource_name" "snet" {
   separator     = "-"
 }
 
-data "popsrox_utils_resource_name" "nsg" {
+data "popsrox_resource_name" "nsg" {
   for_each      = var.spoke_subnets
   name          = var.workload_name
   resource_type = "azurerm_network_security_group"
@@ -36,7 +36,7 @@ data "popsrox_utils_resource_name" "nsg" {
   separator     = "-"
 }
 
-data "popsrox_utils_resource_name" "st" {
+data "popsrox_resource_name" "st" {
   name          = random_id.uniqueString.hex
   resource_type = "azurerm_storage_account"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
@@ -44,7 +44,7 @@ data "popsrox_utils_resource_name" "st" {
   use_slug      = var.use_naming
 }
 
-data "popsrox_utils_resource_name" "ddos" {
+data "popsrox_resource_name" "ddos" {
   name          = var.workload_name
   resource_type = "azurerm_network_ddos_protection_plan"
   prefixes      = [var.org_name, var.use_location_short_name ? module.mod_azregions.location_short : module.mod_azregions.location_cli]
