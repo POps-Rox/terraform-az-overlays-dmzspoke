@@ -10,9 +10,9 @@ terraform {
       version               = "~> 3.116"
       configuration_aliases = [azurerm.hub_network]
     }
-    popsrox-utils = {
+    popsrox = {
       source  = "POps-Rox/azutils"
-      version = "~> 1.0.4"
+      version = "~> 1.0"
     }
   }
 }
