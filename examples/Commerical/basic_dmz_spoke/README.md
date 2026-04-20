@@ -9,7 +9,7 @@ provider "azurerm" {
 }
 
 module "mod_vnet_spoke" {
-  source  = "azurenoops/overlays-dmz-spoke/azurerm"
+  source  = "POps-Rox/overlays-dmz-spoke/azurerm"
   version = "~> 1.0"
 
   # By default, this module will create a resource group, provide the name here
