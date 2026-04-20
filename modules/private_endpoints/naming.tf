@@ -1,4 +1,4 @@
-data "popsrox_resource_name" "private_endpoint" {
+data "popsrox_utils_resource_name" "private_endpoint" {
   resource_type = "azurerm_private_endpoint"
 
   name        = var.workload_name
@@ -9,7 +9,7 @@ data "popsrox_resource_name" "private_endpoint" {
   separator   = "-"
 }
 
-data "popsrox_resource_name" "private_dns_zone_group" {
+data "popsrox_utils_resource_name" "private_dns_zone_group" {
   resource_type = "azurerm_private_dns_zone_group"
 
   name        = var.workload_name
@@ -20,7 +20,7 @@ data "popsrox_resource_name" "private_dns_zone_group" {
   separator   = "-"
 }
 
-data "popsrox_resource_name" "private_service_connection" {
+data "popsrox_utils_resource_name" "private_service_connection" {
   resource_type = "azurerm_private_service_connection"
 
   name        = var.workload_name

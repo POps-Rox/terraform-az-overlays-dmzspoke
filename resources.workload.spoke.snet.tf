@@ -14,7 +14,7 @@ AUTHOR/S: jrspinella
 
 resource "azurerm_subnet" "default_snet" {
   for_each             = var.spoke_subnets
-  name                 = var.custom_spoke_subnet_name != null ? "${var.custom_spoke_subnet_name}_${each.key}" : "${data.popsrox_resource_name.snet[each.key].result}"
+  name                 = var.custom_spoke_subnet_name != null ? "${var.custom_spoke_subnet_name}_${each.key}" : "${data.popsrox_utils_resource_name.snet[each.key].result}"
   resource_group_name  = local.resource_group_name
   virtual_network_name = azurerm_virtual_network.spoke_vnet.name
   address_prefixes     = each.value.address_prefixes
