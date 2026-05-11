@@ -1,6 +1,6 @@
 
 module "mod_vnet_spoke" {
-  #source  = "github.com/POps-Rox/tf-az-overlays-dmzspoke"
+  #source  = "github.com/POps-Rox/terraform-az-overlays-dmzspoke"
   #version = "~> x.x.x"
   source = "../../.."
   providers = {

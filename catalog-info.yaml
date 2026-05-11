@@ -1,10 +1,10 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: tf-az-overlays-dmzspoke
+  name: terraform-az-overlays-dmzspoke
   description: Terraform overlay module for DMZ spoke virtual networks
   annotations:
-    github.com/project-slug: POps-Rox/tf-az-overlays-dmzspoke
+    github.com/project-slug: POps-Rox/terraform-az-overlays-dmzspoke
     backstage.io/techdocs-ref: dir:.
   tags:
     - terraform
@@ -12,7 +12,7 @@ metadata:
     - azure
     - platform-ops
   links:
-    - url: https://github.com/POps-Rox/tf-az-overlays-dmzspoke
+    - url: https://github.com/POps-Rox/terraform-az-overlays-dmzspoke
       title: GitHub Repository
       icon: github
 spec:
