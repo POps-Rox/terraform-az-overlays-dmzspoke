@@ -19,7 +19,7 @@ resource "azurerm_subnet" "snet_ep" {
   resource_group_name                       = var.existing_vnet_id == null ? data.azurerm_virtual_network.vnet.0.resource_group_name : element(split("/", var.existing_vnet_id), 4)
   virtual_network_name                      = var.existing_vnet_id == null ? data.azurerm_virtual_network.vnet.0.name : element(split("/", var.existing_vnet_id), 8)
   address_prefixes                          = var.private_subnet_address_prefix
-  private_endpoint_network_policies_enabled = true
+  private_endpoint_network_policies      = "Enabled"
 }
 
 resource "azurerm_private_endpoint" "pep" {
