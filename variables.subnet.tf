@@ -12,7 +12,7 @@ variable "spoke_subnets" {
     name                                       = string
     address_prefixes                           = list(string)
     service_endpoints                          = list(string)
-    private_endpoint_network_policies_enabled  = bool
+    private_endpoint_network_policies_enabled  = bool # Converted to string enum in resource block for 4.x compatibility
     private_endpoint_service_endpoints_enabled = bool
 
     # Delegation block - see https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet#delegation
