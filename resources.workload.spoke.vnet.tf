@@ -28,9 +28,8 @@ resource "azurerm_virtual_network" "spoke_vnet" {
 
 resource "azurerm_network_ddos_protection_plan" "ddos" {
   count               = var.create_ddos_plan ? 1 : 0
-  name                = var.ddos_plan_name
+  name                = local.ddos_plan_name
   resource_group_name = local.resource_group_name
   location            = local.location
-  tags                = merge({ "ResourceName" = format("%s", var.ddos_plan_name) }, local.default_tags, var.add_tags, )
+  tags                = merge({ "ResourceName" = format("%s", local.ddos_plan_name) }, local.default_tags, var.add_tags, )
 }
-

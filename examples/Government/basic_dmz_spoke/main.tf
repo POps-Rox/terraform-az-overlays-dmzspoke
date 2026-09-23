@@ -2,12 +2,9 @@
 # Licensed under the MIT License.
 
 module "mod_vnet_spoke" {
-  #source  = "github.com/POps-Rox/terraform-az-overlays-workloadspoke"
+  # source = "../../.."
   #version = "~> x.x.x"
   source = "../../.."
-  providers = {
-    azurerm.hub_network = azurerm.hub
-  }
 
   # By default, this module will create a resource group, provide the name here
   # To use an existing resource group, specify the existing resource group name, 
