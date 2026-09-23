@@ -14,11 +14,16 @@ AUTHOR/S: jrspinella
 
 resource "azurerm_subnet" "default_snet" {
   for_each             = var.spoke_subnets
-  name                 = var.custom_spoke_subnet_name != null ? "${var.custom_spoke_subnet_name}_${each.key}" : "${data.popsrox_resource_name.snet[each.key].result}"
+  name                 = var.custom_spoke_subnet_name != null && var.custom_spoke_subnet_name != "" ? "${var.custom_spoke_subnet_name}_${each.key}" : data.popsrox_resource_name.snet[each.key].result
   resource_group_name  = local.resource_group_name
   virtual_network_name = azurerm_virtual_network.spoke_vnet.name
   address_prefixes     = each.value.address_prefixes
-  service_endpoints    = lookup(each.value, "service_endpoints", [])
+  dynamic "service_endpoint" {
+    for_each = toset(lookup(each.value, "service_endpoints", []))
+    content {
+      service = service_endpoint.value
+    }
+  }
   # Applicable to the subnets which used for Private link endpoints or services 
   private_endpoint_network_policies = lookup(each.value, "private_endpoint_network_policies_enabled", null) != null ? (
     lookup(each.value, "private_endpoint_network_policies_enabled", false) ? "Enabled" : "Disabled"
@@ -36,4 +41,3 @@ resource "azurerm_subnet" "default_snet" {
     }
   }
 }
-
